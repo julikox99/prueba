@@ -4,4 +4,12 @@ models:
     columns:
       - name: :DDATE
         description: "solo se encuentra fecha de inicio de cadames"
+      - name: :SALESPERSON
+        description: "VENDEDOR"
+      - name: :CARMAKE
+        description: "MARCA AUTO"
+      - name: :TOTAL_SALE
+        description: "TOTAL VENTA"
+      - name: :TOTALCOM
+        description: "TOTAL COMISION"
       
