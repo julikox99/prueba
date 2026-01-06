@@ -43,3 +43,14 @@ models:
           - relationships:
               field: ID_SALESPERSON
               to: ref("dim_salesperson")
+      - name: ID_CARMAKE
+        description: "ID FORANEO A LA DIM MARCA AUTO"
+        tests:
+          - not_null 
+          - relationships:
+              field: ID_CARMAKE
+              to: ref("dim_CARMAKE")
+      - name: TOTAL_SALE
+        description: "MONTO DE VENTA"
+      - name: TOTALCOM
+        description: "TOTALCOMISION"        
