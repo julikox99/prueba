@@ -9,12 +9,18 @@ models:
         tests:
           - unique
           - not_null
+          - relationships:
+              field: ID_CARMAKE
+              to: ref('dim_carmake')
       - name: CARMAKE
         description: "nombre de marca de auto"
         tests:
           - unique
           - not_null 
-  
+          - accepted_values:
+              values: ['Toyota','Ford','Honda','Nissan','Chevrolet','BMW','Audi','Volkswagen']
+              config:
+                severity: warn
   - name: dim_salesperson
     description: "dimension de vendedores de autos. contiene una clave unica para cada marca"
     columns:
@@ -23,6 +29,9 @@ models:
         tests:
           - unique
           - not_null
+          - relationships:
+              field: ID_SALESPERSON
+              to: ref('dim_salesperson')
       - name: SALESPERSON
         description: "nombre de VENDEDOR de auto"
         tests:
