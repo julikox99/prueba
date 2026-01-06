@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: dim_carmake
+    description: "dimension de marcas de autos. contiene una clave unica para cada marca"
+    columns:
+      - name: ID_CARMAKE
+        description: "id unica de marca de auto"
+        tests:
+          - unique
+          - not_null
+      - name: CARMAKE
+        description: "nombre de marca de auto"
+        tests:
+          - unique
+          - not_null 
+  
+  - name: dim_salesperson
+    description: "dimension de vendedores de autos. contiene una clave unica para cada marca"
+    columns:
+      - name: ID_SALESPERSON
+        description: "id unica de VENDEDOR de auto"
+        tests:
+          - unique
+          - not_null
+      - name: SALESPERSON
+        description: "nombre de VENDEDOR de auto"
+        tests:
+          - unique
+          - not_null 
+  
+  - name: fct_monthly_sales
+    description: "tabla de hechos que consolida las ventas mensuales agregadas por vendedor y marca de auto"
+    columns:
+      - name: DDATE
+        description: "MES DE LA VENTA PRIMER DIA DEL MES"
+        tests:
+          - not_null
+      - name: ID_SALESPERSON
+        description: "ID FORANEO A LA DIM VENDEDORES"
+        tests:
+          - not_null 
+          - relationships:
+              field: ID_SALESPERSON
+              to: ref("dim_salesperson")

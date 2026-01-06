@@ -1,0 +1,7 @@
+models:
+  - name: psg_monthly_sale_make
+    description: "modelo intermedio que agrupa ventas mensual por marca del vendedor"
+    columns:
+      - name: :DDATE
+        description: "solo se encuentra fecha de inicio de cadames"
+      
