@@ -1,7 +1,8 @@
 {{
    config(
     materialized='incremental',
-    incremental_strategy='append',
+    incremental_strategy='merge',
+    unique_key=['DDATE','SALESPERSON','CARMAKE'],
     tags=['procesing','sales','carmake']
    )
 }}
