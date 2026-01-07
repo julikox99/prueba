@@ -1,6 +1,7 @@
 {{
    config(
-    materialized='table',
+    materialized='incremental',
+    incremental_strategy='append',
     tags=['procesing','sales','carmake']
    )
 }}
@@ -12,4 +13,7 @@ SELECT
       SUM(SALEPRICE - COM_EAR) AS TOTAL_SALE,
       SUM(COM_EAR) AS TOTALCOM
 FROM {{ref("stg_sales_data_202p") }}
+{% if is_incremental() %}
+where DDATE > (SELECT MAX(DDATE) FROM {{this}})
+{% endif %}
 GROUP BY DATE_TRUNC('MONTH',DDATE),SALESPERSON,CARMAKE
