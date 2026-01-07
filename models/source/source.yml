@@ -28,3 +28,5 @@ sources:
             description: "monto auto"
           - name: COMMISSIONEARNED
             description: "comision ganada"
+      - name: SALESPERSON
+        description: "tabla de vendedores de autos"
